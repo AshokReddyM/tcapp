@@ -1,0 +1,30 @@
+﻿<resources>
+    <string name="app_name">Tollywood</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3877906654321071/3794990547</string>
+    <string name="full_ad_unit_id">ca-app-pub-3877906654321071/6270778947</string>
+    <string name="between_ad_unit_id">ca-app-pub-3877906654321071/1282176145</string>
+    <string name="video_ad_unit_id_full">ca-app-pub-3877906654321071/7747512147</string>
+    <string name="favoriteactor">మీకు ఇష్టమైన హీరోలు ని సెలెక్ట్ చేయండి</string>
+    <string name="youtube_id">AIzaSyAzE0qkAXz4eLK7zAMXVHFbF5NA7M1V_Ds</string>
+    <string name="failed">Some error is occured in playing video</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="logo">logo</string>
+    <string name="invitation_message">Hey! Download Tollywood Movie news app and get daily updates on movies,reviews,videos and many more</string>
+    <string name="invitation_deep_link">http://tollywoodcircle.com/</string>
+    <string name="invitation_custom_image">http://www.iluvcinema.in/imgs/telugu.png</string>
+    <string name="invitation_title">Tollywood Circle</string>
+    <string name="invitation_cta">Download App</string>
+    <string name="actors">actors</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pref_previously_started">first_time_pref</string>
+    <string name="videoAd">ca-app-pub-3877906654321071/1491817325</string>
+
+
+</resources>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+        <include
+            layout="@layout/app_bar_main2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#e7e7e8"
+            android:fitsSystemWindows="true">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:background="@color/colorPrimary"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginBottom="28dp"
+                            android:src="@drawable/text_logo" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/add_website_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:background="@drawable/ripple_custom"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/g"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:src="@drawable/ic_website"
+                            android:tint="#212121" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/g"
+                            android:layout_toRightOf="@id/g"
+                            android:text="Do you want App ?"
+                            android:textColor="#212121"
+                            android:textSize="16dp" />
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_right_arrow"
+                            android:tint="@color/colorPrimary" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/feedback_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:background="@drawable/ripple_custom"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/h"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:src="@drawable/ic_feedback"
+                            android:tint="#212121" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/h"
+                            android:layout_toRightOf="@id/h"
+                            android:text="Feedback"
+                            android:textColor="#212121"
+                            android:textSize="16dp" />
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_right_arrow"
+                            android:tint="@color/colorPrimary" />
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rate_app_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:background="@drawable/ripple_custom"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/i"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:src="@drawable/ic_rating"
+                            android:tint="#212121" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/i"
+                            android:layout_toRightOf="@id/i"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Rate this app"
+                            android:textColor="#212121"
+                            android:textSize="16dp" />
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:src="@drawable/ic_right_arrow"
+                            android:tint="@color/colorPrimary" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/about_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:background="@drawable/ripple_custom"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/j"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:src="@drawable/ic_about"
+                            android:tint="#212121" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/j"
+                            android:layout_toRightOf="@id/j"
+                            android:text="About"
+                            android:textColor="#212121"
+                            android:textSize="16dp" />
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_right_arrow"
+                            android:tint="@color/colorPrimary" />
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </ScrollView>
+
+
+        </android.support.design.widget.NavigationView>
+
+    </android.support.v4.widget.DrawerLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

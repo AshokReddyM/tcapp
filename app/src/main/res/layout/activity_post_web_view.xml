@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+
+    <RelativeLayout
+        android:id="@+id/post_heading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:elevation="2dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/back_web_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_back"
+            android:tint="@color/colorPrimary" />
+
+
+        <ImageView
+            android:id="@+id/share"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_whatsapp"
+            android:tint="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/share"
+            android:layout_toEndOf="@+id/back_web_view"
+            android:layout_toRightOf="@+id/back_web_view"
+            android:text="Home"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:id="@+id/content_bind_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/post_heading_layout"
+        android:background="@color/colorWhite">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/post_img"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/placeholder"
+                android:scaleType="centerCrop" />
+
+
+            <com.tollywood24.tollywoodcircle.other.CustomTextView2
+                android:id="@+id/post_heading_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/post_img"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+               android:padding="10dp"
+                android:lineSpacingExtra="-5dp"
+                android:textColor="#212121"
+                android:textSize="23dp"
+                android:textStyle="bold" />
+
+
+            <com.tollywood24.tollywoodcircle.other.CustomTextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/adView_player"
+                android:background="@color/colorWhite"
+                android:lineSpacingExtra="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+
+            <ProgressBar
+                android:id="@+id/web_page_loading_progress"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
+

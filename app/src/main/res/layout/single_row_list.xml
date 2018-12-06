@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="0.5dp"
+    android:background="@drawable/ripple_custom"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="5dp"
+    android:paddingTop="10dp">
+
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="#B2DFDB"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.tollywood24.tollywoodcircle.other.CustomTextView2
+        android:id="@+id/titleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:text="Hello"
+        android:lineSpacingExtra="3dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#212121"
+        android:gravity="start"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/img"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/post_from_web_link"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/titleText"
+        android:maxLength="35"
+        android:text="Google.com"
+        android:textColor="#c1c1c1"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/time" />
+
+
+    <ImageView
+        android:id="@+id/time"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/post_postDate"
+        android:layout_alignTop="@+id/post_postDate"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_time"
+        app:layout_constraintBottom_toBottomOf="@+id/img"
+        app:layout_constraintStart_toEndOf="@+id/post_from_web_link"
+        android:layout_marginLeft="8dp" />
+
+
+    <TextView
+        android:id="@+id/post_postDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@id/time"
+        android:layout_toRightOf="@id/time"
+        android:text="2m"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/time"
+        app:layout_constraintStart_toEndOf="@+id/time"
+        app:layout_constraintTop_toTopOf="@+id/time"
+        android:layout_marginLeft="8dp" />
+
+
+</android.support.constraint.ConstraintLayout>

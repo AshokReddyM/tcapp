@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_search_by_actor"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.tollywood24.tollywoodcircle.activities.SearchByActorActivity">
+
+    <RelativeLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="@drawable/editext_border"
+        android:elevation="2dp"
+        android:transitionName="activity_transition">
+
+        <ImageView
+            android:id="@+id/iv_search_back"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:paddingTop="3dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:paddingLeft="10dp"
+            android:src="@drawable/ic_back"
+            android:tint="#000000" />
+
+        <EditText
+            android:id="@+id/search_box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/iv_search_back"
+            android:layout_toRightOf="@+id/iv_search_back"
+            android:background="@android:color/transparent"
+            android:hint="Search by Actors | Movies | etc"
+            android:imeOptions="actionSearch"
+            android:layout_marginRight="45dp"
+            android:inputType="textNoSuggestions"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textColor="#212121" />
+
+        <ImageView
+            android:id="@+id/iv_search_mic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_mic" />
+
+    </RelativeLayout>
+
+
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id" />
+
+
+</RelativeLayout>

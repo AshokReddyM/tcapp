@@ -1,0 +1,143 @@
+{
+  "project_info": {
+    "project_number": "89530977252",
+    "firebase_url": "https://tcadmin-107b9.firebaseio.com",
+    "project_id": "tcadmin-107b9",
+    "storage_bucket": "tcadmin-107b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89530977252:android:eb23d5a18970f7dc",
+        "android_client_info": {
+          "package_name": "com.byt_eye.tcadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89530977252-2h1faeuejqi9bdamranrvis2m59410rj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.byt_eye.tcadmin",
+            "certificate_hash": "365bdeb13ac4b3611862ba3c75760ebbb8757fb2"
+          }
+        },
+        {
+          "client_id": "89530977252-ovs72aq0oaqd15dmqnv1jo18nc2h7lvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4ltw_9wzvF41p1eqqbxuvhBljwFsnFMI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89530977252-ovs72aq0oaqd15dmqnv1jo18nc2h7lvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89530977252:android:3ddf983eeb20b640",
+        "android_client_info": {
+          "package_name": "com.android.tollywoodcircle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89530977252-scgkk3p234qtvbiga6el78k7ujta74p3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.tollywoodcircle",
+            "certificate_hash": "365bdeb13ac4b3611862ba3c75760ebbb8757fb2"
+          }
+        },
+        {
+          "client_id": "89530977252-ovs72aq0oaqd15dmqnv1jo18nc2h7lvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4ltw_9wzvF41p1eqqbxuvhBljwFsnFMI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89530977252-ovs72aq0oaqd15dmqnv1jo18nc2h7lvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89530977252:android:8f9984bc44b461dd",
+        "android_client_info": {
+          "package_name": "com.tollywood24.tollywoodcircle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89530977252-dvkhcjonbojpdn9jp6oh4gahmvptqoh9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tollywood24.tollywoodcircle",
+            "certificate_hash": "dceb6829c194cf88d3b8abb01451ddaaccab86f8"
+          }
+        },
+        {
+          "client_id": "89530977252-ovs72aq0oaqd15dmqnv1jo18nc2h7lvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4ltw_9wzvF41p1eqqbxuvhBljwFsnFMI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89530977252-ovs72aq0oaqd15dmqnv1jo18nc2h7lvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

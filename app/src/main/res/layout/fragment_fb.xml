@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e7e7e8"
+    android:orientation="vertical">
+
+
+    <com.tollywood24.tollywoodcircle.activities.ExpandableHeightGridView
+        android:id="@+id/grid_websites"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:numColumns="3"
+        android:paddingBottom="5dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="20dp" />
+
+
+</android.support.v4.widget.NestedScrollView>
+
+
