@@ -1,4 +1,4 @@
-package com.tollywood24.tollywoodcircle.activities;
+package com.tollywood24.tollywoodcircle.classes;
 
 import android.content.Context;
 import android.util.AttributeSet;

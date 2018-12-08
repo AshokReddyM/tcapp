@@ -9,16 +9,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.AdapterView;
-import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.tollywood24.tollywoodcircle.R;
-import com.tollywood24.tollywoodcircle.activities.ExpandableHeightGridView;
-import com.tollywood24.tollywoodcircle.activities.PostDetailsActivity;
+import com.tollywood24.tollywoodcircle.classes.ExpandableHeightGridView;
 import com.tollywood24.tollywoodcircle.adapters.CustomGrid;
 
 /**

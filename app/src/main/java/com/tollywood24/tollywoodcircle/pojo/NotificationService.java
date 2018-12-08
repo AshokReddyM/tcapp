@@ -1,10 +1,8 @@
 package com.tollywood24.tollywoodcircle.pojo;
 
-import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.bluetooth.BluetoothClass;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,8 +23,7 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import com.tollywood24.tollywoodcircle.R;
 import com.tollywood24.tollywoodcircle.Upload;
-import com.tollywood24.tollywoodcircle.activities.MainActivity;
-import com.tollywood24.tollywoodcircle.activities.PostDetailsActivity;
+import com.tollywood24.tollywoodcircle.webview.PostDetailsActivity;
 
 /**
  * Created by ca6 on 20/3/18.

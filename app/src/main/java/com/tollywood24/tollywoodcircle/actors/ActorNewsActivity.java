@@ -1,4 +1,4 @@
-package com.tollywood24.tollywoodcircle.activities;
+package com.tollywood24.tollywoodcircle.actors;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,11 +14,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.tollywood24.tollywoodcircle.R;
 import com.tollywood24.tollywoodcircle.Upload;
@@ -26,7 +21,6 @@ import com.tollywood24.tollywoodcircle.adapters.RssFeedListAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;

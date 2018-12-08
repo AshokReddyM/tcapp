@@ -1,4 +1,4 @@
-package com.tollywood24.tollywoodcircle.activities;
+package com.tollywood24.tollywoodcircle.actors;
 
 import android.content.Intent;
 import android.os.Bundle;

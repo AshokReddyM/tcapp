@@ -1,7 +1,6 @@
 package com.tollywood24.tollywoodcircle.fragments;
 
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,8 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ProgressBar;
 
 import com.tollywood24.tollywoodcircle.R;
-import com.tollywood24.tollywoodcircle.activities.ExpandableHeightGridView;
-import com.tollywood24.tollywoodcircle.activities.PostWebViewActivity;
+import com.tollywood24.tollywoodcircle.classes.ExpandableHeightGridView;
 import com.tollywood24.tollywoodcircle.adapters.CustomGrid;
 
 

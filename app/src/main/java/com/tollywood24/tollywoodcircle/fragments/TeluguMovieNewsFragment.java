@@ -2,13 +2,8 @@ package com.tollywood24.tollywoodcircle.fragments;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -16,18 +11,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -56,7 +44,6 @@ public class TeluguMovieNewsFragment extends Fragment {
     private SwipeRefreshLayout swipeLayout;
     private ArrayList<Upload> previousDataModalsList;
     private CoordinatorLayout coordinatorLayout;
-    private Snackbar snackbar;
 
 
     @Override
@@ -83,22 +70,6 @@ public class TeluguMovieNewsFragment extends Fragment {
         dataModalsList = new ArrayList<>();
         previousDataModalsList = new ArrayList<>();
 
-        ImageView facebook = (ImageView) getActivity().findViewById(R.id.facebook);
-
-        facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    getActivity().getPackageManager().getPackageInfo("com.facebook.katana", 0);
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/191541087982907")));
-                    Toast.makeText(getActivity(), "Please Like 'Rangastalam' Page", Toast.LENGTH_LONG).show();
-
-                } catch (PackageManager.NameNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
 
         swipeLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.swipe_container);
 
@@ -119,8 +90,6 @@ public class TeluguMovieNewsFragment extends Fragment {
             }
         });
 
-
-        showSnackBar("తాజా వార్తలు తీసుకుంటున్నాము...");
 
         finalDataSetInAdapter();
 
@@ -181,7 +150,6 @@ public class TeluguMovieNewsFragment extends Fragment {
                     Collections.reverse(dataModalsList);
                     recyclerViewAdapter(dataModalsList);
 
-                    snackbar.dismiss();
                     swipeLayout.setRefreshing(false);
 
 
@@ -237,19 +205,6 @@ public class TeluguMovieNewsFragment extends Fragment {
         long diffDays = (currentDateMilliSec - updateDateMilliSec) / (24 * 60 * 60 * 1000);
 
         return ((int) diffDays);
-    }
-
-
-    public void showSnackBar(String text) {
-
-        snackbar = Snackbar.make(coordinatorLayout, text, Snackbar.LENGTH_INDEFINITE);
-        snackbar.setActionTextColor(Color.RED);
-        View snackbarView = snackbar.getView();
-        snackbarView.setBackgroundColor(Color.DKGRAY);
-        TextView textView = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.YELLOW);
-        snackbar.show();
-
     }
 
 

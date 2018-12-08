@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
 
-    <com.tollywood24.tollywoodcircle.activities.ExpandableHeightGridView
+    <com.tollywood24.tollywoodcircle.classes.ExpandableHeightGridView
         android:id="@+id/grid_websites"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

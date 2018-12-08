@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="com.tollywood24.tollywoodcircle.activities.SearchByActorActivity">
+    tools:context=".actors.SearchByActorActivity">
 
     <RelativeLayout
         android:id="@+id/search_layout"

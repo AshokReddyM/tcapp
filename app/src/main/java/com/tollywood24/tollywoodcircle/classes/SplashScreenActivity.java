@@ -1,4 +1,4 @@
-package com.tollywood24.tollywoodcircle.activities;
+package com.tollywood24.tollywoodcircle.classes;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.tollywood24.tollywoodcircle.R;
+import com.tollywood24.tollywoodcircle.main.MainActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:elevation="5dp"
-    tools:context="com.tollywood24.tollywoodcircle.activities.PlayerActivity">
+    tools:context=".player.PlayerActivity">
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/player_view"

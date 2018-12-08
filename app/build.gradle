@@ -56,10 +56,16 @@ dependencies {
     compile 'com.google.android.gms:play-services-ads:11.8.0'
     compile "com.google.firebase:firebase-database:$FIRE_BASE_VERSION"
     testCompile 'junit:junit:4.12'
-    compile 'com.evernote:android-job:1.2.5'
     compile "com.android.support:customtabs:$SUPPORT_LIBRARY_VERSION"
     compile 'org.jsoup:jsoup:1.11.2'
     compile 'com.jakewharton:butterknife:8.8.1'
+
+    compile 'com.google.android.exoplayer:exoplayer:2.6.0'
+
+
+
+    compile 'com.aurelhubert:ahbottomnavigation:2.1.0'
+
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
 

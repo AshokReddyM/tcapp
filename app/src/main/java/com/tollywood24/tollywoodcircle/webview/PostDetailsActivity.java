@@ -1,4 +1,4 @@
-package com.tollywood24.tollywoodcircle.activities;
+package com.tollywood24.tollywoodcircle.webview;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -23,8 +23,8 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.squareup.picasso.Picasso;
 import com.tollywood24.tollywoodcircle.R;
 import com.tollywood24.tollywoodcircle.Upload;
+import com.tollywood24.tollywoodcircle.main.MainActivity;
 
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.tollywood24.tollywoodcircle.R;
 import com.tollywood24.tollywoodcircle.VideoItem;
-import com.tollywood24.tollywoodcircle.activities.PlayerActivity;
+import com.tollywood24.tollywoodcircle.player.PlayerActivity;
 
 import java.util.List;
 

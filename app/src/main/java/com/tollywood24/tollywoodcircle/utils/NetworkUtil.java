@@ -1,4 +1,4 @@
-package com.tollywood24.tollywoodcircle;
+package com.tollywood24.tollywoodcircle.utils;
 
 /**
  * Created by trainee on 12/8/2017.

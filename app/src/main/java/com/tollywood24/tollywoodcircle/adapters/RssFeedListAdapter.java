@@ -2,10 +2,7 @@ package com.tollywood24.tollywoodcircle.adapters;
 
 import android.app.Activity;
 import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.support.customtabs.CustomTabsClient;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.customtabs.CustomTabsServiceConnection;
@@ -18,14 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import com.tollywood24.tollywoodcircle.NetworkUtil;
+import com.tollywood24.tollywoodcircle.utils.NetworkUtil;
 import com.tollywood24.tollywoodcircle.R;
 import com.tollywood24.tollywoodcircle.Upload;
 import com.squareup.picasso.Picasso;
-import com.tollywood24.tollywoodcircle.activities.PostDetailsActivity;
+import com.tollywood24.tollywoodcircle.webview.PostDetailsActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

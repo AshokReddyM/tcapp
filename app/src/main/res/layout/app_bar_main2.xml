@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.tollywood24.tollywoodcircle.activities.MainActivity">
+    tools:context=".main.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -17,7 +17,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/colorPrimary"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
 
@@ -81,7 +80,6 @@
         android:id="@+id/activity_list_of_addresses"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
@@ -103,19 +101,10 @@
             android:id="@+id/address_viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="50dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@id/addresses_tab_layout" />
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adView_player"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#ffffff"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id" />
+            android:layout_below="@id/addresses_tab_layout"
+            android:layout_marginBottom="50dp" />
 
 
     </RelativeLayout>

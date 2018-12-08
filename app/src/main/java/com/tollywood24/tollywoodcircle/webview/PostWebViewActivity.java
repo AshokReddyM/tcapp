@@ -1,4 +1,4 @@
-package com.tollywood24.tollywoodcircle.activities;
+package com.tollywood24.tollywoodcircle.webview;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
