@@ -8,6 +8,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.tollywood24.tollywoodcircle.R;
 import com.tollywood24.tollywoodcircle.ui.base.BaseActivity;
+import com.tollywood24.tollywoodcircle.ui.local_video_player.ListFragment;
 import com.tollywood24.tollywoodcircle.ui.news.main_page.MainNewsFragment;
 import com.tollywood24.tollywoodcircle.utils.UiUtils;
 
@@ -58,16 +59,12 @@ public class LandingScreenActivity extends BaseActivity {
 
                 switch (position) {
                     case 0:
-
                         fragmentReplace(new MainNewsFragment(), "news");
-
-
                         break;
                     case 1:
-
-
                         break;
                     case 2:
+                        fragmentReplace(new ListFragment(), "local videos");
                         break;
                     case 3:
                         break;
