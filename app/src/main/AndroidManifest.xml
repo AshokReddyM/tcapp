@@ -10,6 +10,7 @@
 
 
     <application
+        android:name=".Application"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/logo"
@@ -17,72 +18,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".webview.PostDetailsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="tc24news.blogspot.com"
-                    android:scheme="http" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.webkit.WebView.MetricsOptOut"
-                android:value="true" />
-        </activity>
-
-        <service android:name=".FirebaseMessage">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
-
 
         <service
-            android:name=".RssPullService"
+            android:name=".ui.RssPullService"
             android:enabled="true"
             android:exported="false" />
 
 
-        <activity android:name=".player.PlayerActivity" />
-
-
-        <activity
-            android:name=".main.MainActivity"
-            android:label="Tollywood"
-            android:screenOrientation="portrait" />
-
-
-        <activity android:name=".actors.SearchByActorActivity" />
-
-        <activity android:name=".actors.ActorNewsActivity" />
-
-        <activity android:name=".webview.PostWebViewActivity" />
-
-        <activity android:name=".classes.SplashScreenActivity">
-
-        </activity>
-
-        <activity android:name=".classes.DeepLinkActity" />
-        <activity android:name=".landingpage.DemoActivity" >
+        <activity android:name=".ui.splash_screen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
-        <service
-            android:name=".FirebaseService"
-            android:enabled="true"
-            android:exported="true">
+        <activity android:name=".ui.landingpage.activity.LandingScreenActivity">
 
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
+        </activity>
+        <activity android:name=".ui.news.news_list.PostDetailsActivity" />
+
 
     </application>
 

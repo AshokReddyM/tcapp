@@ -2,12 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     useLibrary 'org.apache.http.legacy'
-    compileSdkVersion 26
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.tollywood24.tollywoodcircle"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 7
+        multiDexEnabled true
         versionName "2.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -19,61 +20,130 @@ android {
     }
 }
 
+
 dependencies {
+    final PLAY_SERVICES_VERSION = '15.0.0'
+    final SUPPORT_LIBRARY_VERSION = '27.1.1'
+    final RETROFIT_VERSION = '2.3.0'
+    final DAGGER_VERSION = '2.5'
+    final MOCKITO_VERSION = '2.6.2'
+    final HAMCREST_VERSION = '1.3'
+    final ESPRESSO_VERSION = '2.2.1'
+    final RUNNER_VERSION = '0.4'
+    final BUTTER_KNIFE_VERSION = '8.8.1'
 
-    final SUPPORT_LIBRARY_VERSION = '26.1.0'
-    final FIRE_BASE_VERSION = '11.8.0'
-    final GSON_VERSION = '2.8.1'
 
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation "com.google.firebase:firebase-database:$FIRE_BASE_VERSION"
-    implementation "com.google.firebase:firebase-messaging:$FIRE_BASE_VERSION"
-    implementation 'com.android.support:support-v4:26.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile files('libs/YouTubeAndroidPlayerApi.jar')
-    compile files('libs/google-api-client-1.22.0.jar')
-    compile files('libs/google-api-client-android-1.22.0.jar')
-    compile files('libs/google-api-client-jackson2-1.22.0.jar')
-    compile files('libs/google-http-client-1.22.0.jar')
-    compile files('libs/google-http-client-android-1.22.0.jar')
-    compile files('libs/google-http-client-jackson2-1.22.0.jar')
-    compile files('libs/google-oauth-client-1.22.0.jar')
-    compile files('libs/jackson-core-2.1.3.jar')
-    compile files('libs/jsr305-1.3.9.jar')
-    compile files('libs/picasso-2.4.0.jar')
-    compile files('libs/google-api-services-youtube-v3-rev183-1.22.0.jar')
+    def daggerCompiler = "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    def jUnit = "junit:junit:4.12"
+    def mockito = "org.mockito:mockito-core:$MOCKITO_VERSION"
 
-    //noinspection GradleCompatible
-    compile "com.android.support:support-compat:$SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
-    compile "com.google.firebase:firebase-core:$FIRE_BASE_VERSION"
-    compile "com.google.code.gson:gson:$GSON_VERSION"
-    compile 'com.google.android.gms:play-services-ads:11.8.0'
-    compile "com.google.firebase:firebase-database:$FIRE_BASE_VERSION"
-    testCompile 'junit:junit:4.12'
+    compile 'com.google.firebase:firebase-database:11.8.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:27.1.1'
+    compile 'com.android.support:support-vector-drawable:27.1.1'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    // App Dependencies
+    compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
     compile "com.android.support:customtabs:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+
+
+    compile('com.squareup.sqlbrite2:sqlbrite:2.0.0') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+
+    compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
+
+
+
+    compile 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.7'
+
+
+    compile "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
+
+    // Replace provided dependency below with official AutoValue once this issue is fixed
+
+    compile 'com.android.support:multidex:1.0.3'
+
+    annotationProcessor 'com.squareup:javapoet:1.9.0'
+
+    //Required by Dagger2
+    compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    testCompile "com.google.dagger:dagger:$DAGGER_VERSION"
+    androidTestAnnotationProcessor "com.google.dagger:dagger:$DAGGER_VERSION"
+    testAnnotationProcessor "com.google.dagger:dagger:$DAGGER_VERSION"
+
+    provided 'org.glassfish:javax.annotation:10.0-b28' //Required by Dagger2
+    annotationProcessor daggerCompiler
+
+    testAnnotationProcessor daggerCompiler
+    androidTestAnnotationProcessor daggerCompiler
+
+    // Instrumentation test dependencies
+    annotationProcessor daggerCompiler
+    testAnnotationProcessor daggerCompiler
+
+    androidTestCompile jUnit
+    androidTestCompile mockito
+    androidTestCompile daggerCompiler
+    androidTestCompile "org.mockito:mockito-android:$MOCKITO_VERSION"
+    androidTestCompile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
+    androidTestCompile("com.android.support.test.espresso:espresso-contrib:$ESPRESSO_VERSION") {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION"
+    androidTestCompile "com.android.support.test:runner:$RUNNER_VERSION"
+    androidTestCompile "com.android.support.test:rules:$RUNNER_VERSION"
+
+    // Unit tests dependencies
+    testCompile jUnit
+    testCompile mockito
+
+    testCompile "org.hamcrest:hamcrest-core:$HAMCREST_VERSION"
+    testCompile "org.hamcrest:hamcrest-library:$HAMCREST_VERSION"
+    testCompile "org.hamcrest:hamcrest-integration:$HAMCREST_VERSION"
+    testCompile 'org.robolectric:robolectric:3.3'
+
+    compile 'com.android.support.constraint:constraint-layout:1.1.3'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+
+
+    compile 'com.android.support:support-dynamic-animation:27.1.1'
+
+    //rx java
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.7'
+    compile 'com.jakewharton.timber:timber:4.5.1'
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    //exoplayer
+    compile 'com.google.android.exoplayer:exoplayer-core:2.7.3'
+    compile 'com.google.android.exoplayer:exoplayer-dash:2.7.3'
+    compile 'com.google.android.exoplayer:exoplayer-ui:2.7.3'
+    compile 'com.google.android.exoplayer:exoplayer-hls:2.7.3'
+
+    //gson
+    compile 'com.google.code.gson:gson:2.8.2'
     compile 'org.jsoup:jsoup:1.11.2'
-    compile 'com.jakewharton:butterknife:8.8.1'
-
-    compile 'com.google.android.exoplayer:exoplayer:2.6.0'
-
-
-
+    //bottom menu
     compile 'com.aurelhubert:ahbottomnavigation:2.1.0'
 
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
-
-
-
-
-
-
-
 
 apply plugin: 'com.google.gms.google-services'
