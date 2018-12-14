@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:elevation="5dp"
+    android:focusable="true"
+    android:padding="10dp">
+
+
+    <ImageView
+        android:id="@+id/youtube_thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#e7e7e7"
+        android:scaleType="centerCrop"
+        android:visibility="visible" />
+
+
+    <TextView
+        android:id="@+id/video_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/youtube_thumbnail"
+        android:layout_marginTop="5dp"
+        android:alpha="0.9"
+        android:lineSpacingExtra="2dp"
+        android:maxLines="3"
+        android:paddingBottom="5dp"
+        android:paddingRight="10dp"
+        android:text="Video Title testing"
+        android:textColor="#212121"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/video_title"
+        android:layout_marginBottom="5dp"
+        android:text="Source :"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/video_title"
+        android:layout_toEndOf="@+id/textView8"
+        android:layout_toRightOf="@+id/textView8"
+        android:alpha="0.5"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="Youtube"
+        android:textColor="#212121"
+        android:textSize="12dp" />
+
+
+</RelativeLayout>
+

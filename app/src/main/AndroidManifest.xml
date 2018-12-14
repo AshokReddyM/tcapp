@@ -15,7 +15,7 @@
         android:name=".Application"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -33,7 +33,14 @@
         </activity>
         <activity android:name=".ui.landingpage.activity.LandingScreenActivity" />
         <activity android:name=".ui.news.news_list.PostDetailsActivity" />
-        <activity android:name=".ui.local_video_player.VideoActivity" />
+        <activity
+            android:name=".ui.local_video_player.PlayerActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" />
+        <activity android:name=".ui.online.videos_list.VideosListActivity"></activity>
+        <activity
+            android:name=".ui.news.dummy.DummyMainActivity"
+            android:label="@string/title_activity_dummy_main"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

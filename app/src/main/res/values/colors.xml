@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#009fb7</color>
-    <color name="colorAccent">#b11126</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#ff8635</color>
     <color name="white">#FFFFFF</color>
     <color name="colorDimWhite">#918e8e</color>
     <color name="primary_text">#212121</color>
@@ -13,6 +13,15 @@
     <color name="colorGreen">#0AA189</color>
     <color name="splash_background">#FFB74F</color>
 
+
+    <color name="twilight_blue">#0a316d</color>
+    <color name="navy">#021430</color>
+    <color name="cool_grey">#9fa6b0</color>
+    <color name="duck_egg_blue">#d6f1f9</color>
+    <color name="sick_green">#acd433</color>
+    <color name="grapefruit">#ff6363</color>
+    <color name="black_63">#a1000000</color>
+    <color name="windows_blue">#3495af</color>
 
     <color name="color_tab_1">#455C65</color>
     <color name="color_tab_2">#00886A</color>

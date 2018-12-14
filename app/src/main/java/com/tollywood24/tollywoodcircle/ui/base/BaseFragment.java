@@ -15,10 +15,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import timber.log.Timber;
 
-/**
- * Created by arun bangar on 17/01/18.
- */
-
 public class BaseFragment extends BottomSheetDialogFragment {
 
 

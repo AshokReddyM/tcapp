@@ -143,6 +143,8 @@ dependencies {
     compile 'org.jsoup:jsoup:1.11.2'
     //bottom menu
     compile 'com.aurelhubert:ahbottomnavigation:2.1.0'
+    compile "im.ene.toro3:toro:3.5.2"
+    compile "im.ene.toro3:toro-ext-exoplayer:3.5.2"
 
 }
 

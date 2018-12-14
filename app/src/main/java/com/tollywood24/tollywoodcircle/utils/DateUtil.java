@@ -59,6 +59,7 @@ public class DateUtil {
 
     public static String timeConversion(int totalSeconds) {
 
+        totalSeconds = totalSeconds / 1000;
         final int MINUTES_IN_AN_HOUR = 60;
         final int SECONDS_IN_A_MINUTE = 60;
 
@@ -67,7 +68,7 @@ public class DateUtil {
         int minutes = totalMinutes % MINUTES_IN_AN_HOUR;
         int hours = totalMinutes / MINUTES_IN_AN_HOUR;
 
-        return hours + ":" + minutes + ":" + seconds;
+        return String.format("%2d:%2d:%2d", hours, minutes, seconds);
     }
 
 

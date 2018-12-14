@@ -1,10 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
-    android:background="#e7e7e8"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="@drawable/background"
+        app:elevation="5dp"
+        app:layout_scrollFlags="scroll|enterAlways">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:padding="8dp">
+
+
+            <ImageView
+                android:id="@+id/notifications"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:src="@drawable/ic_notifications"
+                android:tint="#212121" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/search_background"
+                android:drawableEnd="@drawable/ic_search"
+                android:drawableTint="#aeaeae"
+                android:gravity="center_vertical"
+                android:hint="Enter Keyword"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:textColorHint="#aeaeae"
+                android:textSize="14dp" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
@@ -13,19 +61,17 @@
         android:layout_marginBottom="1dp"
         android:background="#ffffff"
         app:tabGravity="center"
-        app:tabMode="scrollable"
         app:tabIndicatorHeight="0dp"
-        app:tabSelectedTextColor="@color/colorPrimaryDark"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/colorAccent"
         app:tabTextAppearance="@style/tab_text"
         app:tabTextColor="#363636" />
 
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tabs"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="wrap_content" />
 
 
-</RelativeLayout>
+</LinearLayout>

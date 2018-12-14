@@ -1,16 +1,19 @@
 package com.tollywood24.tollywoodcircle.ui.landingpage.activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.tollywood24.tollywoodcircle.R;
 import com.tollywood24.tollywoodcircle.ui.base.BaseActivity;
 import com.tollywood24.tollywoodcircle.ui.local_video_player.ListFragment;
-import com.tollywood24.tollywoodcircle.ui.news.main_page.MainNewsFragment;
-import com.tollywood24.tollywoodcircle.utils.UiUtils;
+import com.tollywood24.tollywoodcircle.ui.news.news_landing.MainNewsFragment;
+import com.tollywood24.tollywoodcircle.ui.online.video_landing_page.fragment.YoutubeVideosFragment;
+import com.tollywood24.tollywoodcircle.ui.profile.ProfileFragment;
 
 import java.util.ArrayList;
 
@@ -25,9 +28,10 @@ public class LandingScreenActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        UiUtils.setMiuiStatusBarDarkMode(this, true);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+        setContentView(R.layout.activity_landing_page);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
@@ -46,8 +50,10 @@ public class LandingScreenActivity extends BaseActivity {
 
 
         bottomNavigation.setTranslucentNavigationEnabled(true);
-        bottomNavigation.restoreBottomNavigation(true);
-        bottomNavigation.setColored(true);
+        bottomNavigation.restoreBottomNavigation(false);
+        bottomNavigation.setColored(false);
+        bottomNavigation.setBehaviorTranslationEnabled(false);
+        bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
         bottomNavigation.setSelectedBackgroundVisible(true);
 
         bottomNavigation.setCurrentItem(0);
@@ -62,11 +68,13 @@ public class LandingScreenActivity extends BaseActivity {
                         fragmentReplace(new MainNewsFragment(), "news");
                         break;
                     case 1:
+                        fragmentReplace(new YoutubeVideosFragment(), "online videos");
                         break;
                     case 2:
                         fragmentReplace(new ListFragment(), "local videos");
                         break;
                     case 3:
+                        fragmentReplace(new ProfileFragment(), "profile");
                         break;
 
                 }

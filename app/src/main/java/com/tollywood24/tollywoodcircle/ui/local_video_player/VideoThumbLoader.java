@@ -1,16 +1,19 @@
 package com.tollywood24.tollywoodcircle.ui.local_video_player;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.util.LruCache;
 import android.widget.ImageView;
 
 public class VideoThumbLoader {
 
     private LruCache<String, Bitmap> lruCache;
+    Context context;
 
     @SuppressLint("NewApi")
     public VideoThumbLoader() {
@@ -76,6 +79,7 @@ public class VideoThumbLoader {
                 // imageView, this address
                 // Listview loading the image
                 // dislocation solution
+
                 imgView.setImageBitmap(bitmap);
             }
         }

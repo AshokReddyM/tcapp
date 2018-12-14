@@ -2,6 +2,7 @@ package com.tollywood24.tollywoodcircle.ui.local_video_player;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.net.Uri;
@@ -22,11 +23,14 @@ import com.tollywood24.tollywoodcircle.R;
 import com.tollywood24.tollywoodcircle.data.model.LocalVideo;
 import com.tollywood24.tollywoodcircle.ui.base.BaseFragment;
 import com.tollywood24.tollywoodcircle.utils.DateUtil;
+import com.tollywood24.tollywoodcircle.utils.PermissionUtils;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class ListFragment extends BaseFragment {
 
@@ -103,7 +107,6 @@ public class ListFragment extends BaseFragment {
 
             VideoThumbLoader mVideoThumbLoader = new VideoThumbLoader();
             holder.mThumbnail.setTag(videosList.get(position).getPath());// binding imageview
-            holder.mThumbnail.setImageResource(R.drawable.background); //default image
             mVideoThumbLoader.showThumbByAsynctack(videosList.get(position).getPath(), holder.mThumbnail);
 
             holder.mVideoTitle.setText(videosList.get(position).getTitle());
@@ -114,9 +117,10 @@ public class ListFragment extends BaseFragment {
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(getActivity(), VideoActivity.class);
-                    intent.putExtra("video_path",videosList.get(position).getPath());
+                    Intent intent = new Intent(getActivity(), PlayerActivity.class);
+                    intent.putExtra("video_uri", videosList.get(position).getPath());
                     startActivity(intent);
+                    getActivity().overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
                 }
             });
         }
@@ -142,9 +146,16 @@ public class ListFragment extends BaseFragment {
         }
 
 
+
         @Override
         public int getItemCount() {
             return videosList.size();
         }
+
+
+
     }
+
+
+
 }

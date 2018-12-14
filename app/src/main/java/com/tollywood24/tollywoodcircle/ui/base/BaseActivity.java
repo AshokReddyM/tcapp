@@ -22,11 +22,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-/**
- * Abstract activity that every other Activity in this application must implement. It handles
- * creation of Dagger components and makes sure that instances of ConfigPersistentComponent survive
- * across configuration changes.
- */
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     private static final String KEY_ACTIVITY_ID = "KEY_ACTIVITY_ID";
