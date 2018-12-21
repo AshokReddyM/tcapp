@@ -6,12 +6,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.tollywood24.tollywoodcircle.data.local.DatabaseHelper;
 import com.tollywood24.tollywoodcircle.data.local.PreferencesHelper;
+import com.tollywood24.tollywoodcircle.data.model.CategoryResponse;
 import com.tollywood24.tollywoodcircle.data.model.Upload;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -36,6 +38,51 @@ public class DataManager {
     public PreferencesHelper getPreferencesHelper() {
         return mPreferencesHelper;
     }
+
+
+    public Observable<List<CategoryResponse>> getCategories(final DatabaseReference database) {
+
+        return Observable.create(new ObservableOnSubscribe<List<CategoryResponse>>() {
+            @Override
+            public void subscribe(final ObservableEmitter<List<CategoryResponse>> e) throws Exception {
+                database.orderByKey()
+                        .limitToLast(600).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        try {
+                            List<CategoryResponse> categoriesList = new ArrayList<>();
+
+                            for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+                                if (dataSnapshot.hasChildren()) {
+                                    String key = noteDataSnapshot.getKey();
+                                    String value = (String) noteDataSnapshot.getValue();
+                                    categoriesList.add(new CategoryResponse(value, key));
+                                } else {
+                                    DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
+                                    firstChild.getRef().removeValue();
+                                }
+                            }
+                            e.onNext(categoriesList);
+                        } catch (Exception ex) {
+                            e.onError(ex);
+                            ex.printStackTrace();
+                        } finally {
+                            e.onComplete();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+
+                });
+            }
+        });
+    }
+
+
 
     public Observable<ArrayList<Upload>> getLatestNews(final DatabaseReference database) {
 
@@ -97,4 +144,6 @@ public class DataManager {
 
         return ((int) diffDays);
     }
+
+
 }

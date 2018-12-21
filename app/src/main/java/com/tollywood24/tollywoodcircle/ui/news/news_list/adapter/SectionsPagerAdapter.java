@@ -5,14 +5,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.tollywood24.tollywoodcircle.data.model.CategoryResponse;
 import com.tollywood24.tollywoodcircle.ui.news.news_list.fragment.DynamicNewsFragment;
+
+import java.util.ArrayList;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    private String[] titles = {"Breaking News", "Entertainment", "Politics", "Technology", "National", "Gallery"};
 
-    public SectionsPagerAdapter(FragmentManager fm) {
+    private final ArrayList<CategoryResponse> categories;
+
+
+    public SectionsPagerAdapter(FragmentManager fm, ArrayList<CategoryResponse> categories) {
         super(fm);
+        this.categories = categories;
     }
 
     @Override
@@ -23,12 +29,12 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return titles.length;
+        return categories.size();
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return titles[position];
+        return categories.get(position).getName();
     }
 }

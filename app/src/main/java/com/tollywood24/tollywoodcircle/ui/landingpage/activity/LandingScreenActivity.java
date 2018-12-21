@@ -37,19 +37,23 @@ public class LandingScreenActivity extends BaseActivity {
 
 
         AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.ic_newspaper, R.color.color_tab_1);
+/*
         AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.ic_online_video, R.color.color_tab_2);
+*/
         AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_3, R.drawable.ic_local_video, R.color.color_tab_3);
         AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.tab_4, R.drawable.ic_user, R.color.color_tab_4);
 
         bottomNavigationItems.add(item1);
+/*
         bottomNavigationItems.add(item2);
+*/
         bottomNavigationItems.add(item3);
         bottomNavigationItems.add(item4);
 
         bottomNavigation.addItems(bottomNavigationItems);
 
 
-        bottomNavigation.setTranslucentNavigationEnabled(true);
+        bottomNavigation.setTranslucentNavigationEnabled(false);
         bottomNavigation.restoreBottomNavigation(false);
         bottomNavigation.setColored(false);
         bottomNavigation.setBehaviorTranslationEnabled(false);
@@ -67,14 +71,14 @@ public class LandingScreenActivity extends BaseActivity {
                     case 0:
                         fragmentReplace(new MainNewsFragment(), "news");
                         break;
-                    case 1:
+/*                    case 1:
                         fragmentReplace(new YoutubeVideosFragment(), "online videos");
-                        break;
-                    case 2:
+                        break;*/
+                    case 1:
                         fragmentReplace(new ListFragment(), "local videos");
                         break;
-                    case 3:
-                        fragmentReplace(new ProfileFragment(), "profile");
+                    case 2:
+                        fragmentReplace(new ProfileFragment(), "My Account");
                         break;
 
                 }
