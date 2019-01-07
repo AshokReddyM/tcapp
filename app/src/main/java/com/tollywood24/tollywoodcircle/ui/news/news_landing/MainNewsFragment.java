@@ -66,7 +66,6 @@ public class MainNewsFragment extends BaseFragment implements MainNewsMvp {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toast.makeText(getActivity(), "onCreate called", Toast.LENGTH_SHORT).show();
     }
 
 

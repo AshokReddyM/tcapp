@@ -2,6 +2,7 @@ package com.tollywood24.tollywoodcircle.ui.news.news_list.fragment;
 
 import com.google.firebase.database.DatabaseReference;
 import com.tollywood24.tollywoodcircle.data.DataManager;
+import com.tollywood24.tollywoodcircle.data.model.Post;
 import com.tollywood24.tollywoodcircle.data.model.Upload;
 import com.tollywood24.tollywoodcircle.ui.base.BasePresenter;
 import com.tollywood24.tollywoodcircle.utils.RxUtil;
@@ -42,15 +43,15 @@ public class DynamicNewsFragmentPresenter extends BasePresenter<DynamicNewsFragm
         mDataManager.getLatestNews(database)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<ArrayList<Upload>>() {
+                .subscribe(new Observer<ArrayList<Post>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         mDisposable = d;
                     }
 
                     @Override
-                    public void onNext(ArrayList<Upload> uploads) {
-                        getMvpView().onGettingLatestNews(uploads);
+                    public void onNext(ArrayList<Post> posts) {
+                        getMvpView().onGettingLatestNews(posts);
                     }
 
                     @Override

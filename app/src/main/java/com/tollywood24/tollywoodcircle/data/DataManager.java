@@ -7,7 +7,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.tollywood24.tollywoodcircle.data.local.DatabaseHelper;
 import com.tollywood24.tollywoodcircle.data.local.PreferencesHelper;
 import com.tollywood24.tollywoodcircle.data.model.CategoryResponse;
-import com.tollywood24.tollywoodcircle.data.model.Upload;
+import com.tollywood24.tollywoodcircle.data.model.Post;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,12 +25,11 @@ import io.reactivex.ObservableOnSubscribe;
 @Singleton
 public class DataManager {
 
+    public final PreferencesHelper mPreferencesHelper;
     private final DatabaseHelper mDatabaseHelper;
-    private final PreferencesHelper mPreferencesHelper;
 
     @Inject
-    public DataManager(PreferencesHelper preferencesHelper,
-                       DatabaseHelper databaseHelper) {
+    public DataManager(PreferencesHelper preferencesHelper, DatabaseHelper databaseHelper) {
         mPreferencesHelper = preferencesHelper;
         mDatabaseHelper = databaseHelper;
     }
@@ -40,65 +39,32 @@ public class DataManager {
     }
 
 
-    public Observable<List<CategoryResponse>> getCategories(final DatabaseReference database) {
-
-        return Observable.create(new ObservableOnSubscribe<List<CategoryResponse>>() {
-            @Override
-            public void subscribe(final ObservableEmitter<List<CategoryResponse>> e) throws Exception {
-                database.orderByKey()
-                        .limitToLast(600).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        try {
-                            List<CategoryResponse> categoriesList = new ArrayList<>();
-
-                            for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                                if (dataSnapshot.hasChildren()) {
-                                    String key = noteDataSnapshot.getKey();
-                                    String value = (String) noteDataSnapshot.getValue();
-                                    categoriesList.add(new CategoryResponse(value, key));
-                                } else {
-                                    DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
-                                    firstChild.getRef().removeValue();
-                                }
-                            }
-                            e.onNext(categoriesList);
-                        } catch (Exception ex) {
-                            e.onError(ex);
-                            ex.printStackTrace();
-                        } finally {
-                            e.onComplete();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-
-                });
-            }
-        });
+    public Observable<List<CategoryResponse>> getCategoriesFromDB(final DatabaseReference database) {
+        return mDatabaseHelper.getCategoriesFromDB();
     }
 
 
+    public Observable<List<CategoryResponse>> getCategories(final DatabaseReference database) {
 
-    public Observable<ArrayList<Upload>> getLatestNews(final DatabaseReference database) {
+        return mDatabaseHelper.addCategoriesInDB(database);
+    }
 
-        return Observable.create(new ObservableOnSubscribe<ArrayList<Upload>>() {
+
+    public Observable<ArrayList<Post>> getLatestNews(final DatabaseReference database) {
+
+        return Observable.create(new ObservableOnSubscribe<ArrayList<Post>>() {
             @Override
-            public void subscribe(final ObservableEmitter<ArrayList<Upload>> e) throws Exception {
-                database.orderByKey().limitToLast(600).addValueEventListener(new ValueEventListener() {
+            public void subscribe(final ObservableEmitter<ArrayList<Post>> e) throws Exception {
+                database.child("News").limitToLast(600).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
                         try {
-                            ArrayList<Upload> dataModalsList = new ArrayList<>();
+                            ArrayList<Post> dataModalsList = new ArrayList<>();
 
                             for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
                                 if (dataSnapshot.hasChildren()) {
-                                    Upload dataModal = noteDataSnapshot.getValue(Upload.class);
+                                    Post dataModal = noteDataSnapshot.getValue(Post.class);
                                     if (getCountOfDays(dataModal.getPostTime()) < 10) {
                                         dataModalsList.add(dataModal);
                                     } else {

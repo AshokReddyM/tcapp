@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tollywood24.tollywoodcircle.R;
-import com.tollywood24.tollywoodcircle.data.model.Upload;
+import com.tollywood24.tollywoodcircle.data.model.Post;
 import com.tollywood24.tollywoodcircle.ui.base.BaseFragment;
 import com.tollywood24.tollywoodcircle.ui.news.news_list.adapter.NewsListAdapter;
 
@@ -29,7 +29,7 @@ public class DynamicNewsFragment extends BaseFragment implements DynamicNewsFrag
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static final String MY_PREFS_NAME = "MyPrefsFile";
-    ArrayList<Upload> dataModalsList;
+    ArrayList<Post> dataModalsList;
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -41,7 +41,9 @@ public class DynamicNewsFragment extends BaseFragment implements DynamicNewsFrag
     DynamicNewsFragmentPresenter presenter;
 
     private NewsListAdapter adapter;
-    private DatabaseReference database;
+
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference mDatabaseRef;
 
 
     public DynamicNewsFragment() {
@@ -66,14 +68,13 @@ public class DynamicNewsFragment extends BaseFragment implements DynamicNewsFrag
     }
 
 
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
 
-        database = FirebaseDatabase.getInstance().getReference().child("tollywoodnews");
+        mDatabaseRef = database.getReference().child("home").child("News").child("Languages").child("Telugu");
 
         dataModalsList = new ArrayList<>();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -81,7 +82,7 @@ public class DynamicNewsFragment extends BaseFragment implements DynamicNewsFrag
         mRecyclerView.setAdapter(adapter);
 
         swipeRefreshLayout.setRefreshing(true);
-        presenter.getLatestNews(database);
+        presenter.getLatestNews(mDatabaseRef);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -94,7 +95,7 @@ public class DynamicNewsFragment extends BaseFragment implements DynamicNewsFrag
 
 
     @Override
-    public void onGettingLatestNews(ArrayList<Upload> uploads) {
+    public void onGettingLatestNews(ArrayList<Post> uploads) {
         dataModalsList.addAll(uploads);
         adapter.notifyDataSetChanged();
         swipeRefreshLayout.setRefreshing(false);

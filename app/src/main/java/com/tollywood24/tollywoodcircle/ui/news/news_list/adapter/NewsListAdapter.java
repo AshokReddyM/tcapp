@@ -19,6 +19,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.tollywood24.tollywoodcircle.R;
 import com.tollywood24.tollywoodcircle.data.model.NewsViewTypeModel;
+import com.tollywood24.tollywoodcircle.data.model.Post;
 import com.tollywood24.tollywoodcircle.data.model.Upload;
 import com.tollywood24.tollywoodcircle.ui.news.news_list.PostDetailsActivity;
 import com.tollywood24.tollywoodcircle.utils.NetworkUtil;
@@ -33,12 +34,12 @@ import java.util.Date;
 public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int DEFAULT_VIEW_TYPE = 1;
-    private ArrayList<Upload> mRssFeedModels;
+    private ArrayList<Post> mRssFeedModels;
     private Activity mActivity;
     private TextView website;
 
 
-    public NewsListAdapter(ArrayList<Upload> rssFeedModels, Activity activity) {
+    public NewsListAdapter(ArrayList<Post> rssFeedModels, Activity activity) {
         mRssFeedModels = rssFeedModels;
         this.mActivity = activity;
 
@@ -90,14 +91,14 @@ public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (holder.getItemViewType() == NewsViewTypeModel.SINGLE_TYPE) {
 
             FeedModelViewHolder feedModelViewHolder;
-            final Upload feedModel;
+            final Post feedModel;
             if (!(holder instanceof FeedModelViewHolder)) {
                 return;
             }
 
 
             feedModelViewHolder = (FeedModelViewHolder) holder;
-            feedModel = (Upload) mRssFeedModels.get(position);
+            feedModel = (Post) mRssFeedModels.get(position);
 
 
             TextView title = ((TextView) feedModelViewHolder.rssFeedView.findViewById(R.id.titleText));
