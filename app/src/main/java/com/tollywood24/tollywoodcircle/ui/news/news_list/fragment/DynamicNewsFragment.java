@@ -82,7 +82,7 @@ public class DynamicNewsFragment extends BaseFragment implements DynamicNewsFrag
         mRecyclerView.setAdapter(adapter);
 
         swipeRefreshLayout.setRefreshing(true);
-        presenter.getLatestNews(mDatabaseRef);
+        presenter.getLatestNewsFromDB(mDatabaseRef);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

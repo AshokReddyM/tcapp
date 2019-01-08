@@ -6,7 +6,6 @@ import com.tollywood24.tollywoodcircle.data.model.CategoryResponse;
 import com.tollywood24.tollywoodcircle.ui.base.BasePresenter;
 import com.tollywood24.tollywoodcircle.utils.RxUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -38,10 +37,40 @@ public class MainNewsPresenter extends BasePresenter<MainNewsMvp> {
     }
 
 
-    public void getCategories(DatabaseReference database) {
+    public void syncCategories(DatabaseReference database) {
         checkViewAttached();
         RxUtil.dispose(mDisposable);
-        mDataManager.getCategories(database)
+        mDataManager.syncCategories(database)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Observer<List<CategoryResponse>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mDisposable = d;
+                    }
+
+                    @Override
+                    public void onNext(List<CategoryResponse> categoriesArrayList) {
+                        getMvpView().onGettingNewsCategories(categoriesArrayList);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        getMvpView().onError(e.getMessage());
+                        e.printStackTrace();
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
+
+    public void getCategoriesFromDB() {
+        checkViewAttached();
+        RxUtil.dispose(mDisposable);
+        mDataManager.getCategoriesFromDB()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<List<CategoryResponse>>() {

@@ -3,7 +3,6 @@ package com.tollywood24.tollywoodcircle.ui.news.news_list.fragment;
 import com.google.firebase.database.DatabaseReference;
 import com.tollywood24.tollywoodcircle.data.DataManager;
 import com.tollywood24.tollywoodcircle.data.model.Post;
-import com.tollywood24.tollywoodcircle.data.model.Upload;
 import com.tollywood24.tollywoodcircle.ui.base.BasePresenter;
 import com.tollywood24.tollywoodcircle.utils.RxUtil;
 
@@ -37,10 +36,10 @@ public class DynamicNewsFragmentPresenter extends BasePresenter<DynamicNewsFragm
     }
 
 
-    public void getLatestNews(DatabaseReference database) {
+    public void syncLatestNews(DatabaseReference database) {
         checkViewAttached();
         RxUtil.dispose(mDisposable);
-        mDataManager.getLatestNews(database)
+        mDataManager.syncLatestNews(database)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<ArrayList<Post>>() {
@@ -63,6 +62,38 @@ public class DynamicNewsFragmentPresenter extends BasePresenter<DynamicNewsFragm
 
                     @Override
                     public void onComplete() {
+                    }
+                });
+    }
+
+
+    public void getLatestNewsFromDB(final DatabaseReference mDatabaseRef) {
+        checkViewAttached();
+        RxUtil.dispose(mDisposable);
+        mDataManager.getLatestNewsFromDB()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Observer<ArrayList<Post>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mDisposable = d;
+                    }
+
+                    @Override
+                    public void onNext(ArrayList<Post> posts) {
+                        getMvpView().onGettingLatestNews(posts);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        getMvpView().onError(e.getMessage());
+                        e.printStackTrace();
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        syncLatestNews(mDatabaseRef);
                     }
                 });
     }

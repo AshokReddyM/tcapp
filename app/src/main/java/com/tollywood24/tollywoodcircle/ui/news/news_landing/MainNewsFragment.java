@@ -55,7 +55,9 @@ public class MainNewsFragment extends BaseFragment implements MainNewsMvp {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager(), categories);
         pager.setAdapter(mSectionsPagerAdapter);
         tabs.setupWithViewPager(pager);
-        presenter.getCategories(FireBaseDataManager.getCategoriesRef("Telugu"));
+        presenter.syncCategories(FireBaseDataManager.getCategoriesRef("Telugu"));
+
+        presenter.getCategoriesFromDB();
     }
 
     @Override

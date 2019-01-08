@@ -12,7 +12,7 @@ public class Db {
     }
 
 
-    public abstract static class NewsPostTable {
+    public abstract static class NewsTable {
 
         public static final String TABLE_NAME = "news_posts_table";
         public static final String COLUMN_ID = "id";
@@ -26,14 +26,14 @@ public class Db {
 
         public static final String CREATE =
                 "CREATE TABLE " + TABLE_NAME + "("
-                        + COLUMN_ID + " INTEGER COLUMN_API_ID,"
+                        + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,"
                         + COLUMN_CATEGORY_ID + " VARCHAR,"
                         + COLUMN_DESCRIPTION + " VARCHAR,"
                         + COLUMN_IMAGE_URL + " VARCHAR,"
                         + COLUMN_LINK + " VARCHAR,"
                         + COLUMN_POST_TIME + " VARCHAR,"
                         + COLUMN_TOTAL_VIEWS + " VARCHAR,"
-                        + COLUMN_UNIQUE_KEY + " VARCHAR(1)" + " ); ";
+                        + COLUMN_UNIQUE_KEY + " VARCHAR" + " ); ";
 
 
         public static ContentValues toContentValues(Post post) {
@@ -75,9 +75,9 @@ public class Db {
 
         public static final String CREATE =
                 "CREATE TABLE " + TABLE_NAME + "("
-                        + COLUMN_ID + " INTEGER COLUMN_API_ID,"
+                        + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,"
                         + COLUMN_CATEGORY_NAME + " VARCHAR,"
-                        + COLUMN_CATEGORY_ID + " VARCHAR," + " ); ";
+                        + COLUMN_CATEGORY_ID + " VARCHAR" + " ); ";
 
 
         public static ContentValues toContentValues(CategoryResponse categoryResponse) {
