@@ -57,7 +57,9 @@ public class MainNewsFragment extends BaseFragment implements MainNewsMvp {
         tabs.setupWithViewPager(pager);
         presenter.syncCategories(FireBaseDataManager.getCategoriesRef("Telugu"));
 
+/*
         presenter.getCategoriesFromDB();
+*/
     }
 
     @Override

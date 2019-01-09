@@ -15,10 +15,7 @@ import com.squareup.sqlbrite2.SqlBrite;
 import com.tollywood24.tollywoodcircle.data.model.CategoryResponse;
 import com.tollywood24.tollywoodcircle.data.model.Post;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -133,57 +130,36 @@ public class DatabaseHelper {
         });
     }
 
-    public Observable<ArrayList<Post>> syncLatestNews(final DatabaseReference database) {
-        return Observable.create(new ObservableOnSubscribe<ArrayList<Post>>() {
+    public Observable<List<Post>> syncLatestNews(final List<Post> newsList) {
+
+        return Observable.create(new ObservableOnSubscribe<List<Post>>() {
             @Override
-            public void subscribe(final ObservableEmitter<ArrayList<Post>> e) throws Exception {
+            public void subscribe(ObservableEmitter<List<Post>> e) throws Exception {
                 if (e.isDisposed()) return;
-                final BriteDatabase.Transaction transaction = mDb.newTransaction();
-
-                database.child("News").limitToLast(600).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        try {
-                            ArrayList<Post> dataModalsList = new ArrayList<>();
-                            mDb.delete(Db.NewsTable.TABLE_NAME, null);
-
-                            for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                                if (dataSnapshot.hasChildren()) {
-                                    Post dataModal = noteDataSnapshot.getValue(Post.class);
-                                    if (getCountOfDays(dataModal.getPostTime()) < 10) {
-                                        dataModalsList.add(dataModal);
-                                        ContentValues values = Db.NewsTable.toContentValues(new Post(dataModal.getCategory_id(),
-                                                dataModal.getDescription(), dataModal.getImageUrl(), dataModal.getLink(),
-                                                dataModal.getPostTime(), dataModal.getTitle(), dataModal.getTotalViews(), dataModal.getUnique_key()));
-                                        mDb.insert(Db.NewsTable.TABLE_NAME, values, SQLiteDatabase.CONFLICT_REPLACE);
-                                        dataModalsList.add(dataModal);
-                                    } else {
-                                        DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
-                                        firstChild.getRef().removeValue();
-                                    }
-
-                                }
-
-                            }
-                            e.onNext(dataModalsList);
-                            transaction.markSuccessful();
-                        } catch (Exception ex) {
-                            e.onError(ex);
-                            transaction.close();
-                            ex.printStackTrace();
-                        } finally {
-                            e.onComplete();
-                        }
+                BriteDatabase.Transaction transaction = mDb.newTransaction();
+                List<Post> categoriesList = new ArrayList<>();
+                try {
+                    for (Post post : newsList) {
+                        ContentValues values = Db.NewsTable.toContentValues(new Post(post.getCategory_id(),
+                                post.getDescription(), post.getImageUrl(), post.getLink(),
+                                post.getPostTime(), post.getTitle(), post.getTotalViews(), post.getUnique_key()));
+                        mDb.insert(Db.NewsTable.TABLE_NAME, values, SQLiteDatabase.CONFLICT_REPLACE);
                     }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
+                    e.onNext(newsList);
+
+                    transaction.markSuccessful();
+
+                } catch (SQLiteException exception) {
+                    e.onError(exception);
+                    exception.printStackTrace();
+                } finally {
+                    transaction.end();
+                    e.onComplete();
+                }
             }
-
         });
+
     }
 
 
@@ -191,7 +167,6 @@ public class DatabaseHelper {
         return Observable.create(new ObservableOnSubscribe<ArrayList<Post>>() {
             @Override
             public void subscribe(ObservableEmitter<ArrayList<Post>> e) throws Exception {
-
                 if (e.isDisposed()) return;
                 BriteDatabase.Transaction transaction = mDb.newTransaction();
                 String query = "SELECT * FROM " + Db.NewsTable.TABLE_NAME;
@@ -219,26 +194,9 @@ public class DatabaseHelper {
                     transaction.end();
                     e.onComplete();
                 }
-
             }
         });
     }
 
 
-    public int getCountOfDays(String pubDate) {
-        Date date = null;
-        SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy HH:mm:ss");
-        try {
-            date = format.parse(pubDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Date currentdate = new Date();
-        long currentDateMilliSec = currentdate.getTime();
-        long updateDateMilliSec = date.getTime();
-        long diffDays = (currentDateMilliSec - updateDateMilliSec) / (24 * 60 * 60 * 1000);
-
-        return ((int) diffDays);
-
-    }
 }

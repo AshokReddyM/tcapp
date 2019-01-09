@@ -1,5 +1,7 @@
 package com.tollywood24.tollywoodcircle.ui.news.news_list.fragment;
 
+import android.widget.Toast;
+
 import com.google.firebase.database.DatabaseReference;
 import com.tollywood24.tollywoodcircle.data.DataManager;
 import com.tollywood24.tollywoodcircle.data.model.Post;
@@ -7,6 +9,7 @@ import com.tollywood24.tollywoodcircle.ui.base.BasePresenter;
 import com.tollywood24.tollywoodcircle.utils.RxUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -39,35 +42,35 @@ public class DynamicNewsFragmentPresenter extends BasePresenter<DynamicNewsFragm
     public void syncLatestNews(DatabaseReference database) {
         checkViewAttached();
         RxUtil.dispose(mDisposable);
-        mDataManager.syncLatestNews(database)
+        mDataManager.syncNews(database)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<ArrayList<Post>>() {
+                .subscribe(new Observer<List<Post>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        mDisposable = d;
+                        
                     }
 
                     @Override
-                    public void onNext(ArrayList<Post> posts) {
+                    public void onNext(List<Post> posts) {
                         getMvpView().onGettingLatestNews(posts);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        getMvpView().onError(e.getMessage());
-                        e.printStackTrace();
 
                     }
 
                     @Override
                     public void onComplete() {
+
                     }
                 });
     }
 
 
-    public void getLatestNewsFromDB(final DatabaseReference mDatabaseRef) {
+    public void getLatestNewsFromDB() {
+
         checkViewAttached();
         RxUtil.dispose(mDisposable);
         mDataManager.getLatestNewsFromDB()
@@ -93,7 +96,7 @@ public class DynamicNewsFragmentPresenter extends BasePresenter<DynamicNewsFragm
 
                     @Override
                     public void onComplete() {
-                        syncLatestNews(mDatabaseRef);
+
                     }
                 });
     }
